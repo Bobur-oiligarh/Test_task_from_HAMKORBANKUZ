@@ -1,0 +1,28 @@
+{
+  "uz": {
+    "top_menu": [ "first": "Internet-banking", "second": "Foydangizni hisoblang" ],
+    "main_menu": { 1: { "main": "JISMONIY SHAXSLARGA", "sub": [ "Kreditlar", "Avtokredit", "Ipoteka kreditlari", "Omonatlar", "Plastik kartalar", "Pul o'tkazmalari", "Depozit yacheykalari", "O'lchamli oltin quymalar va esdalik tangalar", "Mobayl banking", "ЮMoney", "Valyuta ayirboshlash shaxobchalari", "Tariflar" ] },
+                   2: { "main": "BIZNES UCHUN", "sub": [ "Kreditlar", "Korporativ kartalar", "Savdo terminallarini ijaraga berish", "Mobil terminal", "Valyuta amaliyotlari", "Hujjatli amaliyotlar", "Masofadan xizmat ko'rsatish", "Qimmatli qog’ozlar", "Internet banking", "Mablag'larni joylashtirish", "Hisob-kassa xizmatlari", "Ish haqi loyihasi", "Tariflar" ] },
+                   3: { "main": "AKSIYADOR VA INVESTORLARGA", "sub": [ "Biznes reja", "Dividendlar haqida ma'lumot", "Kafolat fondi", "Aksiyadorlik kapitali shakli", "Muhim faktlar", "Hisobotlar", "Emissiya", "Qayta sotib olingan aksiyalar", "Invitation page" ] },
+                   4: { "main": "MOLIYAVIY TASHKILOTLARGA", "sub": [ "Banklararo amaliyotlar", "Korrespondent munosabatlar", "Moliyaviy hisobot", "Komplayens nazorati" ] },
+                   5: { "main": 'BANK TО‘G‘RISIDA', "sub": [ "Rasmiy ma'lumotlar", "Bank kengashi", "Bank boshqaruvi", "Korporativ boshqaruv", "Karyera", "Moliyaviy savodxonlik", "Umumiy ma'lumot", "Iste'molchi burchagi" ] },
+                   6: { "main": "MATBUOT MARKAZI", "sub": [ ] },
+                   7: { "main": "ISTE'MOLCHI BURCHAGI", "sub": [ ] }
+    },
+    "contact_info": { "full_numbers": [ "0 (800) 1-200-200", "+998 (78) 150-91-25" ], "feedback_text": "QAYTA ALOQA"},
+  },
+
+  "ru": {
+    "top_menu": [ "first": "Интернет банкинг", "second": "Рассчитай выгоду" ],
+    "main_menu": { 1: { "main": "ЧАСТНЫМ КЛИЕНТАМ", "sub": [ "Кредиты", "Автокредит", "Ипотечные кредиты", "Вклады", "Пластиковые карты", "Денежные переводы", "Депозитные ячейки", "Золотые слитки и сувенирные монеты", "Мобильный банкинг", "ЮMoney", "Валютно обменные пункты", "Тарифы" ] },
+                   2: { "main": "ДЛЯ БИЗНЕСА", "sub": [ "Кредиты для бизнеса", "Корпоративные карты", "Аренда торговых терминалов", "Мобильный терминал", "Валютные операции", "Дистанционное обслуживание", "Документарные операции", "Ценные бумаги", "Интернет-банкинг", "Размещение денежных средств", "Расчетно-кассовое обслуживание", "Зарплатный проект", "Тарифы" ] },
+                   3: { "main": "АКЦИОНЕРАМ И ИНВЕСТОРАМ", "sub": [ "Бизнес план", "Информация о дивидендах", "Гарантийный фонд", "Форма акционерного капитала", "Существенные факты", "Отчеты", "Эмиссия", "Перекупленные акции", "Invitation page" ] },
+                   4: { "main": "ФИНАНСОВЫМ ИНСТИТУТАМ", "sub": [ "Межбанковские операции", "Корреспондентские отношения", "Финансовая отчетность", "Комплаенс контроль" ] },
+                   5: { "main": "О БАНКЕ", "sub": [ "Официальная информация", "Совет банка", "Правление банка", "Корпоративное управление", "Карьера", "Финансовая грамотность", "Общая информация", "Уголок потребителя" ] },
+                   6: { "main": "ПРЕСС ЦЕНТР", "sub": [ ] },
+                   7: { "main": "УГОЛОК ПОТРЕБИТЕЛЯ", "sub": [ ] }
+    },
+    "contact_info": { "full_numbers": [ "0 (800) 1-200-200", "+998 (78) 150-91-25" ], "feedback_text": "ОБРАТНАЯ СВЯЗЬ" },
+  }
+}
+
