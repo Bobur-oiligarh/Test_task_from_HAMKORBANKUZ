@@ -16,7 +16,8 @@ class User(Base):
     first_name = Column(String)
     last_name = Column(String)
     avatar = Column(String)
-    address = relationship("Address", uselist=False, backref=backref("user_table"))
+    address = relationship("Address", uselist=False, back_populates="user_table")
+    contacts = relationship("Contact", back_populates='user')
 
 
 class Address(Base):
@@ -31,5 +32,6 @@ class Contact(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("user_table.id"))
     phone_number = Column(String)
+    user = relationship("User", back_populates='contacts')
 
 
