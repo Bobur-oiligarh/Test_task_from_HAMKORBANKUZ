@@ -1,8 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship, backref
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
-
+from database.base import Base
 
 __all__ = ["User", "Address", "Contact"]
 
@@ -15,9 +14,7 @@ class User(Base):
     email = Column(String)
     avatar = Column(String)
 
-
-    def __init__(self, id: int, first_name: str, last_name: str, email: str, avatar: str):
-        self.id = id
+    def __init__(self, first_name: str, last_name: str, email: str, avatar: str):
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
@@ -31,7 +28,7 @@ class Address(Base):
     user = relationship("User", backref=backref("address_table", uselist=False))
     address = Column(String)
 
-    def __init__(self, address: str, user: str):
+    def __init__(self, address: str, user):
         self.address = address
         self.user = user
 
@@ -46,8 +43,3 @@ class Contact(Base):
     def __init__(self, phone_number: str, user: str):
         self.phone_number = phone_number
         self.user = user
-
-
-
-Base.metadata.create_all(engine)
-
