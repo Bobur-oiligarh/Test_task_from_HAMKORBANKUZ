@@ -4,27 +4,36 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 
 
-engine = create_engine('sqlite:///users.db', echo=True)
-
-Base = declarative_base()
+__all__ = ["User", "Address", "Contact"]
 
 
 class User(Base):
     __tablename__ = "user_table"
     id = Column(Integer, primary_key=True)
-    email = Column(String)
     first_name = Column(String)
     last_name = Column(String)
+    email = Column(String)
     avatar = Column(String)
-    address = relationship("Address", uselist=False, back_populates="user_table")
-    contacts = relationship("Contact", back_populates='user')
+
+
+    def __init__(self, id: int, first_name: str, last_name: str, email: str, avatar: str):
+        self.id = id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
+        self.avatar = avatar
 
 
 class Address(Base):
     __tablename__ = "address_table"
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("user_table.id"))
+    user = relationship("User", backref=backref("address_table", uselist=False))
     address = Column(String)
+
+    def __init__(self, address: str, user: str):
+        self.address = address
+        self.user = user
 
 
 class Contact(Base):
@@ -32,6 +41,13 @@ class Contact(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("user_table.id"))
     phone_number = Column(String)
-    user = relationship("User", back_populates='contacts')
+    user = relationship("User", backref="contact_table")
 
+    def __init__(self, phone_number: str, user: str):
+        self.phone_number = phone_number
+        self.user = user
+
+
+
+Base.metadata.create_all(engine)
 
