@@ -83,7 +83,7 @@ if __name__ == '__main__':
     driver.get("https://www.hamkorbank.uz/")
     t = MainPage(driver)
 
-    subloc = SideBarLocators.MAIN_MENU_FIRST_SUBMENU
+    subloc = SideBarLocators.SUBMENU_JISMONIY_SHAXSLARGA
 
     t.check_text_in_submenu_list(
         ['Kreditlar', 'Avtokredit', 'Ipoteka kreditlari', 'Omonatlar', 'Plastik kartalar', "Pul o'tkazmalari",

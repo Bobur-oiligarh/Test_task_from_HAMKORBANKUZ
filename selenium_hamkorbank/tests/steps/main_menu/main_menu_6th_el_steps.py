@@ -8,4 +8,4 @@ from selenium_hamkorbank.pages.page import MainPage
 def step_sixth_el_of_main_menu(context):
     text = context.text_data["main_menu"][6]["main"]
     main_page = MainPage(context.driver)
-    main_page.check_elem_visible_clickable_true_text(SideBarLocators.MAIN_MENU_SIXTH, text)
+    main_page.check_elem_visible_clickable_true_text(SideBarLocators.MATBUOT_MARKAZI_BUTTON, text)

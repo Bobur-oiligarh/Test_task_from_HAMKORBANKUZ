@@ -1,7 +1,6 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Table
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship, backref
-from sqlalchemy import create_engine
-from database.base import Base
+from database.db_tools.base import Base
 
 __all__ = ["User", "Address", "Contact"]
 
@@ -9,10 +8,10 @@ __all__ = ["User", "Address", "Contact"]
 class User(Base):
     __tablename__ = "user_table"
     id = Column(Integer, primary_key=True)
-    first_name = Column(String)
-    last_name = Column(String)
-    email = Column(String)
-    avatar = Column(String)
+    first_name = Column(String(80), nullable=False)
+    last_name = Column(String(80), nullable=False)
+    email = Column(String(120), nullable=False)
+    avatar = Column(String(120))
 
     def __init__(self, first_name: str, last_name: str, email: str, avatar: str):
         self.first_name = first_name
@@ -26,7 +25,7 @@ class Address(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("user_table.id"))
     user = relationship("User", backref=backref("address_table", uselist=False))
-    address = Column(String)
+    address = Column(String(250), nullable=False)
 
     def __init__(self, address: str, user):
         self.address = address
@@ -37,7 +36,7 @@ class Contact(Base):
     __tablename__ = "contact_table"
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("user_table.id"))
-    phone_number = Column(String)
+    phone_number = Column(String(120), nullable=False)
     user = relationship("User", backref="contact_table")
 
     def __init__(self, phone_number: str, user: str):

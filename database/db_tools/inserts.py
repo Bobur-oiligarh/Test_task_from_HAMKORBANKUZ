@@ -1,6 +1,7 @@
+from sqlalchemy import exc
 from sqlalchemy_utils import database_exists, create_database
 from database.models.models import User, Address, Contact
-from database.base import Session, engine, Base
+from database.db_tools.base import Session, engine, Base
 from test_reqres.http_requests.get_users import GetUsers
 
 Base.metadata.create_all(engine)
@@ -8,9 +9,9 @@ session = Session()
 
 user_objects = GetUsers().response().data.users
 
-
 if not database_exists(engine.url):
     create_database(engine.url)
+
 for user_obj in user_objects:
     # Check if user exists in db
     user = (
@@ -25,7 +26,12 @@ for user_obj in user_objects:
                 email=user_obj.email,
                 avatar=user_obj.avatar
                 )
-    session.add(user)
+    try:
+        session.add(user)
+    except exc.SQLAlchemyError as err:
+        session.rollback()
+        print(err)
+
 session.commit()
 
 michael = (session.query(User).filter(User.first_name == "Michael")).one_or_none()
@@ -54,44 +60,26 @@ george_cont = Contact("+99833100 00 07", george)
 rachel_cont = Contact("+99899 900 09 07", rachel)
 
 # persist data above
-session.add(michael_addr)
-session.add(lindsay_addr)
-session.add(tobias_addr)
-session.add(byron_addr)
-session.add(george_addr)
-session.add(rachel_addr)
+try:
+    session.add(michael_addr)
+    session.add(lindsay_addr)
+    session.add(tobias_addr)
+    session.add(byron_addr)
+    session.add(george_addr)
+    session.add(rachel_addr)
 
-session.add(michael_cont)
-session.add(michael_cont_2)
-session.add(michael_cont_3)
-session.add(lindsay_cont)
-session.add(tobias_cont)
-session.add(byron_cont)
-session.add(george_cont)
-session.add(rachel_cont)
+    session.add(michael_cont)
+    session.add(michael_cont_2)
+    session.add(michael_cont_3)
+    session.add(lindsay_cont)
+    session.add(tobias_cont)
+    session.add(byron_cont)
+    session.add(george_cont)
+    session.add(rachel_cont)
 
-# commit and close session
-session.commit()
-session.close()
-
-
-if __name__ == '__main__':
-    pass
-    # get all users
-    # users = (session.query(User).all())
-    # print(len(users))
-    # for us in users:
-    #     print(us.id, us.first_name, us.last_name, us.email, us.avatar)
-    # print(michael.id, michael.email)
-
-    # Get  all addresses
-    # addresses = (session.query(Address).all())
-    # print(len(addresses))
-    # for ad in addresses:
-    #     print(ad.id, ad.user_id, ad.address)
-
-    # Get all contacts
-    # contacts = (session.query(Contact).all())
-    # print(len(contacts))
-    # for con in contacts:
-    #     print(con.id, " ", con.user_id, " ", con.phone_number)
+    session.commit()
+except exc.SQLAlchemyError as err:
+    session.rollback()
+    print(err)
+finally:
+    session.close()

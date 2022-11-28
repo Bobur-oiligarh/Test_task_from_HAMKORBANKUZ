@@ -9,5 +9,4 @@ class GetUsers(BaseRequest):
             method="get",
             data_type=Users,
             params={"page": 2}
-
         )

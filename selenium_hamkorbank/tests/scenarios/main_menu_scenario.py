@@ -12,7 +12,7 @@ from selenium_hamkorbank.tests.steps.main_menu.main_menu_6th_el_steps import ste
 from selenium_hamkorbank.tests.steps.main_menu.main_menu_7th_el_steps import step_seventh_el_of_main_menu
 
 
-def main_menu_of_sidebar(context):
+def sidebar_main_menu_scenario(context):
     step_first_el_of_main_menu(context)
     step_submenu_of_first_el(context)
 

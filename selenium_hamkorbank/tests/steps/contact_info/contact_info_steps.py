@@ -26,7 +26,7 @@ def step_2_full_numbers(context):
 def step_feedback_element(context):
     feedback_field_text = context.text_data.get("contact_info").get("feedback_text")
     main_page = MainPage(context.driver)
-    main_page.check_elem_visible_clickable_true_text(SideBarLocators.FEEDBACK_ELEMENT, feedback_field_text)
+    main_page.check_elem_visible_clickable_true_text(SideBarLocators.QAYTA_ALOQA_LINK, feedback_field_text)
 
 
 @allure.step("Проверка 4 иконок социальных сетей")
