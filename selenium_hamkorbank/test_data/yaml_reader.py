@@ -8,8 +8,8 @@ class HamkorbankuzText:
     _FILE_ABS_PATH = pathlib.Path(__file__).parent.joinpath("sidebar_text.yaml")
 
     def __init__(self):
-        self.uz: dict = self._read()["uz"]
-        self.ru: dict = self._read()['ru']
+        self.uz: dict = self._read().get("uz")
+        self.ru: dict = self._read().get('ru')
 
     def _read(self):
         with open(self._FILE_ABS_PATH, "r") as f:
@@ -18,5 +18,5 @@ class HamkorbankuzText:
 
 
 if __name__ == '__main__':
-    d = HamkorbankuzText()._read()
+    d = HamkorbankuzText().uz
     pprint(d)
