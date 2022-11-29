@@ -1,4 +1,3 @@
-import time
 import unittest
 from selenium import webdriver
 from selenium.webdriver import ActionChains
@@ -45,6 +44,3 @@ class HamkorSideBar(unittest.TestCase):
 
     def tearDown(self):
         self.context.driver.close()
-
-
-
